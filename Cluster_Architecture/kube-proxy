@@ -1,0 +1,13 @@
+It is an agent running on each node
+It looks for new Services created in the cluster and updates the IP table rules on 
+each node to forward the traffic recieved on the IP that is assigned to the SERVICE to the Backend application/DB POD IP
+
+ex: a clusterIP service named DB is created and it gets an IP add. 10.13.25.09
+    PODs grouped for this service is running in Node A with IP 100.23.45.67 & also on Node B at 100.24.45.67
+    On the Nodes IP table is updated by kube-proxy
+
+   Node A IP TABLE
+   10.13.25.09  100.23.45.67
+
+   Node B IP TABLE
+   10.13.25.09  100.24.45.67
