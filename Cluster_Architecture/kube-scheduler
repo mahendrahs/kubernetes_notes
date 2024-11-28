@@ -1,0 +1,3 @@
+It is responsible for deciding which node in a cluster is the best place to run a newly created pod, 
+by analyzing available resources, pod requirements, and other factors to select the most suitable 
+node for optimal performance and resource utilization
