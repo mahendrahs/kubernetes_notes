@@ -1,0 +1,5 @@
+it provides a REST API for the uesrs to interact with the Kubernetes control plane
+
+api-server authenticates user , validates request
+api-server is the only component which intracts with etcd ( like write, read )
+other components like kube-scheduler, kublet interacts with kube-api-server to update the status,configuration, state of the cluster
