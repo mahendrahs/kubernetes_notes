@@ -1,0 +1,30 @@
+A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time. 
+As such, it is often used to guarantee the availability of a specified number of identical Pods
+
+===
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+  labels:
+    env: prod
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        tier: front-end
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: front-end
+    
+====
+# kubectl create -f rs.yaml
+# kubectl edit rs <rs name>  --->  will open the current running config file of the rs
+# kubectl scale rs <rs name> --replicas=1 --> will delete/create the rs to match the count mentioned
+# kubectl set image rs <rs name> nginx-container nginx=nginx:1.26-perl
