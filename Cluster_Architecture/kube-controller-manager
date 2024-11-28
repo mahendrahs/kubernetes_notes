@@ -1,0 +1,14 @@
+kube-controller-manager
+
+Monitors the cluster state via the apiserver
+and steers the cluster towards the desired state.
+
+ex: monitors the status of the nodes, if any node is not reachabe, it will mark it as down ( after 40 secs ), schedules all the pods
+to a different node.
+
+ex: watches the number of pods running and matches with desired state
+
+1.	Obtain desired state
+2.	Observe current state
+3.	Determine differences
+4.	Reconcile differences
