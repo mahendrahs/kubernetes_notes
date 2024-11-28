@@ -1,1 +1,5 @@
 A container runtime will be resposible to spin the containers
+
+ It is responsible for managing the execution and lifecycle of containers within the Kubernetes environment.
+
+Kubernetes supports container runtimes such as containerd, CRI-O, 
