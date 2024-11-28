@@ -1,0 +1,24 @@
+#Create an NGINX Pod
+kubectl run nginx --image=nginx
+
+#Generate POD Manifest YAML file (-o yaml). Don’t create it(–dry-run)
+kubectl run nginx --image=nginx --dry-run=client -o yaml
+
+#Create a deployment
+kubectl create deployment --image=nginx nginx
+
+#Generate Deployment YAML file (-o yaml). Don’t create it(–dry-run)
+kubectl create deployment --image=nginx nginx --dry-run=client -o yaml
+
+#Generate Deployment YAML file (-o yaml). Don’t create it(–dry-run) and save it to a file.
+kubectl create deployment --image=nginx nginx --dry-run=client -o yaml > nginx-deployment.yaml
+
+#In k8s version 1.19+, we can specify the –replicas option to create a deployment with 4 replicas.
+kubectl create deployment --image=nginx nginx --replicas=4 --dry-run=client -o yaml > nginx-deploy.yaml
+
+# kubectl edit rs <rs name>  --->  will open the current running config file of the rs
+# kubectl scale rs <rs name> --replicas=1 --> will delete/create the rs to match the count mentioned
+
+# kubectl set image rs <rs name> nginx-container nginx=nginx:1.26-perl
+
+#kubectl create svc clusterip newservice --clusterip="None" --dry-run=client -o yaml
