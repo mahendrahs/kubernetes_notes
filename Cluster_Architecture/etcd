@@ -1,0 +1,4 @@
+Consistent and highly-available key value store used as Kubernetes' backing store for all cluster data.
+Stores objects and config information
+
+it's the single source of truth for the cluster
