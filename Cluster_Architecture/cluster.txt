@@ -1,2 +1,15 @@
 https://kubernetes.io/docs/concepts/architecture/
 
+CLUSTER
+
+1. control plane
+  a. kube-api server
+  b. etcd
+  c. kube-scheduler
+  d. kube-controller manager
+  e. cloud-controller manager
+
+2. worker nodes
+  a. kubelet
+  b. kube-proxy
+  c. Container Runtime
