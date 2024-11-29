@@ -1,0 +1,41 @@
+kubernetes service
+Its a method of exposing the application running in multiple pods to a single interface
+It provides a single URL for access for the application running behind it
+
+1. NodePort     - Externally made available, spans across Nodes
+2. ClusterIP    - Internally exposed 
+3. LoadBalancer - Externaly made availbale. Cloud Platform Providers
+
+=====
+
+In Kubernetes, a "ClusterIP" service is used for internal communication within the cluster,
+ meaning it only allows access from other pods inside the cluster
+ 
+ while a "NodePort" service exposes your application to external clients by assigning a 
+ specific port on each node in the cluster, allowing access from outside the cluster as well; 
+ 
+ essentially, ClusterIP is for internal traffic and NodePort is for external traffic
+
+
+ =========
+
+kind: Service
+type: LoadBalancer
+
+A "LoadBalancer type Service" in Kubernetes is a service configuration that leverages the
+ underlying cloud provider to automatically provision and manage an external load balancer,
+  effectively distributing incoming traffic across multiple pods within a Kubernetes cluster, 
+  providing external access to your application and ensuring high availability by evenly 
+  distributing requests among available instances; essentially, it acts as a traffic manager
+   that directs incoming connections to the most suitable pod based on load balancing strategies. 
+
+================
+
+spec:
+  type: NodePort / ClusterIP / LoadBalancer
+  selector:
+    app: MyApp
+  ports:
+    - nodePort: 80
+      port: 80
+      targetPort: 9376
