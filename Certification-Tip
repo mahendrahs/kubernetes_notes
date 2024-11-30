@@ -4,8 +4,15 @@ kubectl run nginx --image=nginx
 #Generate POD Manifest YAML file (-o yaml). Don’t create it(–dry-run)
 kubectl run nginx --image=nginx --dry-run=client -o yaml
 
+kubectl run redis --image=redis:alpine --labels="tier=db"
+kubectl run custom-nginx --image=nginx --port=8080
+kubectl create namespace dev-ns
+
+
 #Create a deployment
 kubectl create deployment --image=nginx nginx
+kubectl create deployment redis-deploy --namespace=dev-ns --replicas=2 --image=redis --dry-run=client
+
 
 #Generate Deployment YAML file (-o yaml). Don’t create it(–dry-run)
 kubectl create deployment --image=nginx nginx --dry-run=client -o yaml
@@ -56,3 +63,12 @@ cannot accept a node port. I would recommend going with the
 kubectl expose
 command. If you need to specify a node port, generate a definition file using the same command and manually 
 input the nodeport before creating the service.
+
+Q:Create a pod called httpd using the image httpd:alpine in the default namespace. Next, create a service of type ClusterIP 
+by the same name (httpd). The target port for the service should be 80
+soln
+kubectl run httpd --image=httpd:alpine --port=80 --expose
+output
+controlplane ~ ➜  kubectl run httpd --image=httpd:alpine --port=80 --expose --dry-run=client
+service/httpd created (dry run)
+pod/httpd created (dry run)
